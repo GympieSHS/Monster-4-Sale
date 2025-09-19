@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monster 4 Sale</title>
+  <style>
+    /* General styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000; /* Black background */
+      color: #00ff00; /* Bright green text */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #003300; /* Dark green */
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      color: #00ff00; /* Bright green title */
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #001a00; /* Very dark green */
+      padding: 10px;
+    }
+
+    nav a {
+      color: #00ff00;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #33ff33; /* Lighter green on hover */
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    main h2 {
+      font-size: 2rem;
+      color: #00ff00;
+    }
+
+    footer {
+      background-color: #003300;
+      text-align: center;
+      padding: 15px;
+      color: #00ff00;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Monster 4 Sale</h1>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Shop</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <main>
+    <div>
+      <h2>Welcome to Monster 4 Sale!</h2>
+      <p>Find the creepiest, coolest monsters here. Limited stock — get yours now!</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Monster 4 Sale. All rights reserved.</p>
+  </footer>
+</body>
+</html>
