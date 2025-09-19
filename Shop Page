@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monster 4 Sale - Shop</title>
+  <style>
+    body { margin:0; font-family:Arial,sans-serif; background:#000; color:#0f0; display:flex; flex-direction:column; min-height:100vh;}
+    header { background:#030; padding:20px; text-align:center;}
+    header h1 { margin:0; font-size:3rem; color:#0f0; text-transform:uppercase;}
+    nav { display:flex; justify-content:center; background:#010; padding:10px;}
+    nav a { color:#0f0; text-decoration:none; margin:0 15px; font-weight:bold;}
+    nav a:hover { color:#3f3;}
+    main { flex:1; padding:40px; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
+    .product { background:#010; border:2px solid #0f0; border-radius:10px; text-align:center; padding:20px; transition:transform 0.3s,box-shadow 0.3s;}
+    .product:hover { transform:translateY(-5px); box-shadow:0 0 10px #0f0;}
+    .product h2 { margin-top:0; font-size:1.3rem; color:#0f0;}
+    .product p { font-size:0.9rem; color:#b2ffb2;}
+    .buy-btn { display:inline-block; background:#0f0; color:#000; padding:10px 15px; border-radius:5px; font-weight:bold; margin-top:10px; cursor:pointer;}
+    .buy-btn:hover { background:#3f3; color:#000;}
+    #cart { background:#010; border-top:2px solid #0f0; padding:20px;}
+    table { width:100%; border-collapse:collapse; color:#0f0;}
+    table, th, td { border:1px solid #0f0;}
+    th, td { padding:10px; text-align:center;}
+    #checkout-btn { display:block; margin:20px auto 0 auto; background:#0f0; color:#000; padding:15px 30px; border-radius:8px; font-size:1.2rem; font-weight:bold; cursor:pointer; transition:background 0.3s;}
+    #checkout-btn:hover { background:#3f3;}
+    footer { background:#030; text-align:center; padding:15px; color:#0f0;}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Monster 4 Sale - Shop</h1>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="#">Shop</a>
+  <a href="#">About</a>
+  <a href="#">Contact</a>
+</nav>
+
+
+  <main id="product-list">
+    <!-- Product Cards (each has data-name attribute) -->
+    <div class="product" data-name="Monster Original">
+      <h2>Monster Original</h2>
+      <p>The classic energy boost. $4</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product" data-name="Monster Mango Loco">
+      <h2>Monster Mango Loco</h2>
+      <p>Sweet mango flavor with a punch. $4</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product" data-name="Monster Ultra Peachy">
+      <h2>Monster Ultra Peachy</h2>
+      <p>Light and refreshing peach energy. $4</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product" data-name="Monster Ultra Fantasy Ruby Red">
+      <h2>Monster Ultra Fantasy Ruby Red</h2>
+      <p>Ruby red citrus kick. $4</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product" data-name="Monster Zero Ultra">
+      <h2>Monster Zero Ultra</h2>
+      <p>Zero sugar, max flavor. $4</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product" data-name="Red Bull Berry">
+      <h2>Red Bull Berry</h2>
+      <p>Fruity berry twist from Red Bull. $3.50</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product" data-name="Red Bull Blue">
+      <h2>Red Bull Blue</h2>
+      <p>Blueberry flavor energy boost. $3.50</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product" data-name="Blue V">
+      <h2>Blue V</h2>
+      <p>The iconic blue can with bold taste. $3.50</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product" data-name="Red Bull">
+      <h2>Red Bull</h2>
+      <p>The original classic Red Bull. $3</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product" data-name="Original V">
+      <h2>Original V</h2>
+      <p>Australia’s favorite green can. $3.50</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+  </main>
+  </div>
+
+<div id="cart">
+  <h2>Your Cart</h2>
+  <table id="cart-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <button id="checkout-btn">Checkout</button>
+</div>
+
+<footer>
+  <p>&copy; 2025 Monster 4 Sale. All rights reserved.</p>
+</footer>
+
+<script>
+const cartTableBody = document.querySelector("#cart-table tbody");
+
+// Add to cart function
+function addToCart(productName) {
+  const userName = prompt("Please enter your name:");
+  if (!userName) return;
+
+  const quantity = prompt(`How many of "${productName}" would you like, ${userName}?`);
+  if (!quantity || isNaN(quantity) || quantity <= 0) return;
+
+  let pricePerItem;
+  if (productName.toLowerCase().includes("monster")) pricePerItem = 4;
+  else if (productName.toLowerCase() === "original red bull") pricePerItem = 3;
+  else pricePerItem = 3.5;
+
+  const totalPrice = pricePerItem * quantity;
+
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td>${userName}</td>
+    <td>${productName}</td>
+    <td>${quantity}</td>
+    <td>$${totalPrice.toFixed(2)}</td>
+  `;
+  cartTableBody.appendChild(row);
+  alert(`Added ${quantity} x ${productName} to ${userName}'s cart. Total: $${totalPrice.toFixed(2)}`);
+}
+
+// Attach Buy Now listeners
+document.querySelectorAll(".buy-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const productName = btn.closest(".product").getAttribute("data-name");
+    addToCart(productName);
+  });
+});
+
+// Checkout: download CSV
+document.getElementById("checkout-btn").addEventListener("click", () => {
+  const rows = document.querySelectorAll("#cart-table tbody tr");
+  if (rows.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  let csv = "Name,Product,Quantity,Price\n";
+  rows.forEach(row => {
+    const cells = row.querySelectorAll("td");
+    csv += `${cells[0].textContent},${cells[1].textContent},${cells[2].textContent},${cells[3].textContent}\n`;
+  });
+
+  const blob = new Blob([csv], { type: "text/csv" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "monster_order.csv";
+  link.click();
+
+  alert("Your order has been downloaded as CSV!");
+  cartTableBody.innerHTML = "";
+});
+</script>
+
+</body>
+</html>
